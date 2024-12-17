@@ -30,3 +30,7 @@ Run the docker image: / Ejecutar la imagen:
 ```
 sudo docker container run --rm -p 5000:5000 -ti netskope/webapicont
 ```
+Access the web portal in port 5000: / Acceder al portal en el puerto 5000: 
+```
+http://127.0.0.1:5000/login
+```
