@@ -1,0 +1,15 @@
+<html>
+<body>
+
+<h2>Netskope ApiConnector</h2>
+
+<img src="{{ url_for('static', filename='logo.png') }}" />
+
+<p>Please upload a csv file with the following structure:</p>
+<p>app_name,url,,TCP/UDP Protocol,port,Publisher_ID,Publisher_Name</p>
+
+<form action="/privateapp" method="post" enctype="multipart/form-data">
+  <input type="file" name="file"><br>
+  <input type="submit" value="Upload"><br>
+</form> 
+</html>

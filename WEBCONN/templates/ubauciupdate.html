@@ -1,0 +1,17 @@
+<html>
+<body>
+
+<h2>Netskope ApiConnector</h2>
+
+<img src="{{ url_for('static', filename='logo.png') }}" />
+
+<p>Please fill the fields with the user UPN and points to affect the UCI:</p>
+
+<form action="/ubauciupdate" method="post">
+  <label for="upn">User Name:</label><br>
+  <input type="text" id="upn" name="upn"><br>
+  <label for="uci">UCI:</label><br>
+  <input type="text" id="uci" name="uci"><br>
+  <input type="submit" value="Submit"><br>
+</form> 
+</html>

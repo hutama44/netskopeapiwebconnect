@@ -1,0 +1,19 @@
+<html>
+<body>
+
+<h2>Netskope ApiConnector</h2>
+
+<img src="{{ url_for('static', filename='logo.png') }}" />
+
+<p>Please fill the fields with your user name, last name and UPN</p>
+
+<form action="/useradd" method="post">
+  <label for="uname">User Name:</label><br>
+  <input type="text" id="uname" name="uname"><br>
+  <label for="lname">Last Name:</label><br>
+  <input type="text" id="lname" name="lname"><br>
+  <label for="upn">UPN:</label><br>
+  <input type="text" id="upn" name="upn"><br>
+  <input type="submit" value="Submit"><br>
+</form> 
+</html>

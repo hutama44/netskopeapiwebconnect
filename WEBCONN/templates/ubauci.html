@@ -1,0 +1,17 @@
+<html>
+<body>
+
+<h2>Netskope ApiConnector</h2>
+
+<img src="{{ url_for('static', filename='logo.png') }}" />
+
+<p>Please fill the fields with the user UPN and final date to check the UCI in d/m/y format:</p>
+
+<form action="/ubauci" method="post">
+  <label for="upn">User Name:</label><br>
+  <input type="text" id="upn" name="upn"><br>
+  <label for="date">Date:</label><br>
+  <input type="text" id="date" name="date"><br>
+  <input type="submit" value="Submit"><br>
+</form> 
+</html>

@@ -1,0 +1,15 @@
+<html>
+<body>
+
+<h2>Netskope ApiConnector</h2>
+
+<img src="{{ url_for('static', filename='logo.png') }}" />
+
+<p>Please fill the field with the domain to delete:</p>
+
+<form action="/bulkdelete" method="post">
+  <label for="dom">Domain:</label><br>
+  <input type="text" id="dom" name="dom"><br>
+  <input type="submit" value="Submit"><br>
+</form> 
+</html>

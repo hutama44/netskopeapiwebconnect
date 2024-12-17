@@ -1,0 +1,19 @@
+<html>
+<body>
+
+<h2>Netskope ApiConnector</h2>
+
+<img src="{{ url_for('static', filename='logo.png') }}" />
+
+<p>Please fill the fields with the user UPN and date to check his UCI in d/m/Y format(up to yesterday), also the quarantine group to move the user if his UCI is too low:</p>
+
+<form action="/ucidemo" method="post">
+  <label for="upn">User Name:</label><br>
+  <input type="text" id="upn" name="upn"><br>
+  <label for="gc">Quarantine Group:</label><br>
+  <input type="text" id="gc" name="gc"><br>
+  <label for="rtime">Date:</label><br>
+  <input type="text" id="rtime" name="rtime"><br>
+  <input type="submit" value="Submit"><br>
+</form> 
+</html>

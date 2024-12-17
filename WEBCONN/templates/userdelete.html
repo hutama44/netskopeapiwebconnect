@@ -1,0 +1,15 @@
+<html>
+<body>
+
+<h2>Netskope ApiConnector</h2>
+
+<img src="{{ url_for('static', filename='logo.png') }}" />
+
+<p>Please fill the fields with your user UPN</p>
+
+<form action="/userdelete" method="post">
+  <label for="upn">UPN:</label><br>
+  <input type="text" id="upn" name="upn"><br>
+  <input type="submit" value="Submit"><br>
+</form> 
+</html>

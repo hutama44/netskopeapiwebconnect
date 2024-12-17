@@ -1,0 +1,15 @@
+<html>
+<body>
+
+<h2>Netskope ApiConnector</h2>
+
+<img src="{{ url_for('static', filename='logo.png') }}" />
+
+<p>Please fill the field with the group name:</p>
+
+<form action="/groupdelete" method="post">
+  <label for="group">Group:</label><br>
+  <input type="text" id="group" name="group"><br>
+  <input type="submit" value="Submit"><br>
+</form> 
+</html>
