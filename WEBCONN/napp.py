@@ -18,6 +18,7 @@ import uba_uci
 import uba_uci_update
 import uba_uci_reset
 import ucidemos
+import scim_bulk_load
 
 tenant = 'null'
 token = 'null'
@@ -60,7 +61,9 @@ def login():
 		if request.form['select'] == 'ubaucireset':
 			return render_template('ubaucireset.html')
 		if request.form['select'] == 'ucidemo':
-			return render_template('ucidemo.html')
+			return render_template('bulkgroupadd.html')
+		if request.form['select'] == 'bulkuseradd':
+			return render_template('bulkuseradd.html')
 	return render_template('init.html')
 @app.route('/useradd',methods=['POST','GET'])
 def useradd():
@@ -189,3 +192,18 @@ def ucidemo():
 			return render_template('authfail.html')
 		else:
 			return render_template('resultdemo.html',message=s,color=color)
+@app.route('/bulkuseradd',methods=['POST','GET'])
+def bulkuseradd():
+	if request.method == 'POST':
+		file = request.files['file']
+		if file.filename == '':
+			s = "No se cargó el archivo"
+			return render_template('result.html',message=s)
+		if file:
+			file.save("users.csv")
+			s = scim_bulk_load.main(tenant,token)
+			os.remove("users.csv")
+		if s == 'Unauthorized':
+			return render_template('authfail.html')
+		else:
+			return render_template('result.html',message=s)

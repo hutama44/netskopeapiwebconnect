@@ -1,7 +1,6 @@
 import requests
 import base64
 import json
-from getpass import getpass
 
 def main(s1,token,upn1,last_name,first_name):
 #    s1 = input("Introduzca el nombre del tenant:")
