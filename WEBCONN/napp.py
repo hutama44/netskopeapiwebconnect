@@ -61,7 +61,7 @@ def login():
 		if request.form['select'] == 'ubaucireset':
 			return render_template('ubaucireset.html')
 		if request.form['select'] == 'ucidemo':
-			return render_template('bulkgroupadd.html')
+			return render_template('ucidemo.html')
 		if request.form['select'] == 'bulkuseradd':
 			return render_template('bulkuseradd.html')
 	return render_template('init.html')
