@@ -1,0 +1,81 @@
+<html>
+<body>
+
+<h2>Netskope ApiConnector</h2>
+
+<img src="{{ url_for('static', filename='logo.png') }}" />
+
+<p>Operation completed, the result is:</p>
+<p>{{message}}</p>
+<p>The script to automate turning up the policy in python is:</p>
+<pre>
+
+import requests
+import json
+
+success = 0
+script = []
+s2 = "https://" + "{{s1}}" + ".goskope.com/api/v2/policy/npa/rules"
+headers1 = {'Netskope-Api-Token':"{{token}}", 'accept':'application/json'}
+with requests.Session() as s:
+    i = s.get(s2,headers=headers1)
+    for x in i.json().get('data'):
+        if x['rule_name'] == "{{polname}}":
+            result = json.dumps(x,indent=4)
+            result = x
+            success=1
+    if success != 1:
+        print('Policy not found')
+    else:
+        print(result) 
+polid = result["rule_id"]
+print(polid)
+print(result)
+s3 = "https://htamayo.goskope.com/api/v2/policy/npa/rules/" + polid
+result = {"enabled":"1"}
+
+headers2 = {'Netskope-Api-Token':"{{token}}", 'accept':'application/json', 'Content-Type': 'application/json'}
+
+with requests.Session() as s:
+    i = s.patch(s3,headers=headers2, data=json.dumps(result))
+    print(i.text)
+
+</pre>
+<p>The script to automate turning down the policy in python is:</p>
+
+<pre>
+
+import requests
+import json
+
+success = 0
+script = []
+s2 = "https://" + "{{s1}}" + ".goskope.com/api/v2/policy/npa/rules"
+headers1 = {'Netskope-Api-Token':"{{token}}", 'accept':'application/json'}
+with requests.Session() as s:
+    i = s.get(s2,headers=headers1)
+    for x in i.json().get('data'):
+        if x['rule_name'] == "{{polname}}":
+            result = json.dumps(x,indent=4)
+            result = x
+            success=1
+    if success != 1:
+        print('Policy not found')
+    else:
+        print(result) 
+polid = result["rule_id"]
+print(polid)
+print(result)
+s3 = "https://htamayo.goskope.com/api/v2/policy/npa/rules/" + polid
+result = {"enabled":"0"}
+
+headers2 = {'Netskope-Api-Token':"{{token}}", 'accept':'application/json', 'Content-Type': 'application/json'}
+
+with requests.Session() as s:
+    i = s.patch(s3,headers=headers2, data=json.dumps(result))
+    print(i.text)
+
+</pre>
+<p><a href="login">Return to home page</a></p>
+</html>
+

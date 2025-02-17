@@ -19,6 +19,7 @@ import uba_uci_update
 import uba_uci_reset
 import ucidemos
 import scim_bulk_load
+import npa_cron
 
 tenant = 'null'
 token = 'null'
@@ -64,6 +65,8 @@ def login():
 			return render_template('ucidemo.html')
 		if request.form['select'] == 'bulkuseradd':
 			return render_template('bulkuseradd.html')
+		if request.form['select'] == 'npacron':
+			return render_template('npacron.html')
 	return render_template('init.html')
 @app.route('/useradd',methods=['POST','GET'])
 def useradd():
@@ -207,3 +210,12 @@ def bulkuseradd():
 			return render_template('authfail.html')
 		else:
 			return render_template('result.html',message=s)
+@app.route('/npacron',methods=['POST','GET'])
+def npacron():
+	if request.method == 'POST':
+		polname=request.form['polname']
+		(s,script) = npa_cron.main(tenant,token,polname,request.form['state'])
+		if s == 'Unauthorized':
+			return render_template('authfail.html')
+		else:
+			return render_template('resultcron.html',message=s,s1=tenant,polname=polname,token=token)

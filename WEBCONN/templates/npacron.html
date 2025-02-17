@@ -1,0 +1,19 @@
+<html>
+<body>
+
+<h2>Netskope ApiConnector</h2>
+
+<img src="{{ url_for('static', filename='logo.png') }}" />
+
+<p>Please fill the fields with the policy name and desired policy state:</p>
+
+<form action="/npacron" method="post">
+  <label for="polname">polname:</label><br>
+  <input type="text" id="polname" name="polname"><br>
+  <input type="radio" id="state" name="state" value="enable">
+  <label for="state">Enable</label><br>
+  <input type="radio" id="state" name="state" value="disable">
+  <label for="state">Disable</label><br>
+  <input type="submit" value="Submit"><br>
+</form> 
+</html>
