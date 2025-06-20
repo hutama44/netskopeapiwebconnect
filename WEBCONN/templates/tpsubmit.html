@@ -1,0 +1,14 @@
+<html>
+<body>
+
+<h2>Netskope ApiConnector</h2>
+
+<img src="{{ url_for('static', filename='logo.png') }}" />
+
+<p>Please upload the infected file in a zip format password protected with the word "infected"</p>
+
+<form action="/tpsubmit" method="post" enctype="multipart/form-data">
+  <input type="file" name="file"><br>
+  <input type="submit" value="Upload"><br>
+</form> 
+</html>

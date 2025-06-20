@@ -3,6 +3,7 @@ from flask import request
 from flask import Flask
 from flask import render_template
 from flask import url_for
+from tpgetid import mainjobid
 import scim_put 
 import scim_get_u
 import scim_delete
@@ -19,7 +20,8 @@ import uba_uci_update
 import uba_uci_reset
 import ucidemos
 import scim_bulk_load
-import npa_cron
+import npa_cron 
+import tppost
 
 tenant = 'null'
 token = 'null'
@@ -63,6 +65,10 @@ def login():
 			return render_template('ubaucireset.html')
 		if request.form['select'] == 'ucidemo':
 			return render_template('ucidemo.html')
+		if request.form['select'] == 'tpsubmit':
+			return render_template('tpsubmit.html')
+		if request.form['select'] == 'tpgetid':
+			return render_template('tpgetid.html')
 		if request.form['select'] == 'bulkuseradd':
 			return render_template('bulkuseradd.html')
 		if request.form['select'] == 'npacron':
@@ -195,6 +201,30 @@ def ucidemo():
 			return render_template('authfail.html')
 		else:
 			return render_template('resultdemo.html',message=s,color=color)
+@app.route('/tpsubmit',methods=['POST'])
+def tpsubmit():
+	if request.method == 'POST':
+		file = request.files['file']
+		if file.filename == '':
+			s = "No se cargó el archivo"
+			return render_template('result.html',message=s)
+		if file:
+			file.save('malware.zip')
+			s = tppost.main(tenant,token,'malware.zip')
+			os.remove('malware.zip')
+		if s == 'Unauthorized':
+			return render_template('authfail.html')
+		else:
+			return render_template('result.html',message=s)
+@app.route('/tpgetid',methods=['GET','POST'])
+def tpgetid():
+	if request.method == 'POST':
+		jobid=request.form['jobid']
+		s = mainjobid(tenant,token,jobid)
+		if s == 'Unauthorized':
+			return render_template('authfail.html')
+		else:
+			return render_template('result.html',message=s)
 @app.route('/bulkuseradd',methods=['POST','GET'])
 def bulkuseradd():
 	if request.method == 'POST':
