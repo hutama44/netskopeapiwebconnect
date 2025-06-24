@@ -11,9 +11,9 @@ WEB interface to interact with Netskope's API in container format / Interface WE
 /api/v2/incidents/users/uci/reset \
 /api/v2/scim/Users	\
 /api/v2/ubadatasvc/user/uci \
-/api/v2/policy/npa/policygroups
-/api/v2/atp/scans/reports
-/api/v2/atp/scans/filescan
+/api/v2/policy/npa/policygroups \
+/api/v2/atp/scans/reports \
+/api/v2/atp/scans/filescan \
  
 # Usage/Uso
 Clone the repository locally: / Clonar el repositorio localmente:
