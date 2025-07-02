@@ -27,6 +27,13 @@ tenant = 'null'
 token = 'null'
 app = Flask(__name__)
 
+@app.route('/conti',methods=['POST','GET'])
+def conti():
+	error = None
+	if request.method == 'POST':
+		global tenant
+		global token
+	return render_template('continue.html',tenant=tenant,token=token)
 @app.route('/login',methods=['POST','GET'])
 def login():
 	error = None

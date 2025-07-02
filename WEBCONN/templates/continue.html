@@ -1,0 +1,52 @@
+<html>
+<body>
+
+<h2>Netskope ApiConnector</h2>
+
+<img src="{{ url_for('static', filename='logo.png') }}" />
+
+<form action="/login" method="post">
+<p>Please select the action you want to take:</p>
+<input type="hidden" id="tenant" name="tenant" value={{tenant}}>
+<input type="hidden" id="token" name="token" value={{token}}>
+  <input type="radio" id="useradd" name="select" value="useradd">
+  <label for="useradd">Add User</label><br>
+  <input type="radio" id="userread" name="select" value="userread">
+  <label for="useradd">Read User</label><br>
+  <input type="radio" id="bulkuseradd" name="select" value="bulkuseradd">
+  <label for="useradd">Bulk User Add</label><br>
+  <input type="radio" id="userdelete" name="select" value="userdelete">
+  <label for="useradd">Delete User</label><br>
+  <input type="radio" id="bulkdelete" name="select" value="bulkdelete">
+  <label for="bulkdelete">Bulk Delete</label><br>
+  <input type="radio" id="groupread" name="select" value="groupread">
+  <label for="groupread">Read Group</label><br>
+  <input type="radio" id="groupcreate" name="select" value="groupcreate">
+  <label for="groupcreate">Create Group</label><br>
+  <input type="radio" id="groupupdate" name="select" value="groupupdate">
+  <label for="groupupdate">Update Group</label><br>
+  <input type="radio" id="groupdelete" name="select" value="groupdelete">
+  <label for="groupdelete">Delete Group</label><br>
+  <input type="radio" id="groupuserdel" name="select" value="groupuserdel">
+  <label for="groupuserdel">Delete User From Group</label><br>
+  <input type="radio" id="privateapp" name="select" value="privateapp">
+  <label for="privateapp">Upload Private Apps</label><br>
+  <input type="radio" id="getpubid" name="select" value="getpubid">
+  <label for="getpubid">Get Publisher ID</label><br>
+  <input type="radio" id="ubauci" name="select" value="ubauci">
+  <label for="ubauci">Get UCI</label><br>
+  <input type="radio" id="ubauciupdate" name="select" value="ubauciupdate">
+  <label for="ubauciupdate">Affect UCI</label><br>
+  <input type="radio" id="ubaucireset" name="select" value="ubaucireset">
+  <label for="ubaucireset">Reset UCI</label><br>
+  <input type="radio" id="ucidemo" name="select" value="ucidemo">
+  <label for="ucidemo">UCI Demo</label><br>
+  <input type="radio" id="npacron" name="select" value="npacron">
+  <label for="npacron">Policy Enable/Disable</label><br>
+  <input type="radio" id="tpsubmit" name="select" value="tpsubmit">
+  <label for="tpsubmit">Malicious File Submit</label><br>
+  <input type="radio" id="tpgetid" name="select" value="tpgetid">
+  <label for="tpgetid">TP Job ID Submit</label><br>
+  <input type="submit" value="Submit"><br>
+</form> 
+</html>
